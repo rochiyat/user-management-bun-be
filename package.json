@@ -1,0 +1,24 @@
+{
+  "name": "user-management-bun-be",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run ./build/index.ts",
+    "dev": "bun --watch run ./src/index.ts",
+    "build": "bun build index.ts",
+    "seed": "bun run ./src/seeders/index.seeder.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/express": "^5.0.1",
+    "prisma": "^6.5.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "express": "^4.21.2"
+  }
+}
