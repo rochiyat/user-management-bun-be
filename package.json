@@ -7,11 +7,13 @@
     "start": "bun run ./build/index.ts",
     "dev": "bun --watch run ./src/index.ts",
     "build": "bun build index.ts",
-    "seed": "bun run ./src/seeders/index.seeder.ts"
+    "seed": "bun run ./src/seeders/index.seeder.ts",
+    "test": "bun test"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/express": "^5.0.1",
+    "@types/supertest": "^6.0.3",
     "prisma": "^6.5.0"
   },
   "peerDependencies": {
@@ -19,6 +21,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "supertest": "^7.1.0"
   }
 }
