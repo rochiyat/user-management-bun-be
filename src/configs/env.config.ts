@@ -1,11 +1,13 @@
 const development = {
   NODE_ENV: 'development',
-  PORT: 3000,
+  PORT: process.env.PORT || 3000,
+  JWT_SECRET: process.env.JWT_SECRET || 'sengajadirahasiakan',
 };
 
 const production = {
   NODE_ENV: 'production',
-  PORT: 3000,
+  PORT: process.env.PORT || 3000,
+  JWT_SECRET: process.env.JWT_SECRET || 'sengajadirahasiakan',
 };
 
 const env = process.env.NODE_ENV === 'development' ? development : production;
