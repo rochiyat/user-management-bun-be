@@ -1,37 +1,53 @@
 import prisma from '../configs/db.config';
-import type { Request, Response } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import { returnSuccess, returnNonSuccess } from '../utils/helper.util';
 
-export const getUsers = async (req: Request, res: Response) => {
+export const getUsers = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const users = await prisma.user.findMany();
-    return returnSuccess(req, res, 200, 'Users fetched successfully', users);
+    returnSuccess(req, res, 200, 'Users fetched successfully', users);
   } catch (error) {
-    return returnNonSuccess(req, res, 500, 'Failed to fetch users');
+    next(error);
   }
 };
 
-export const getUserById = async (req: Request, res: Response) => {
+export const getUserById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { id } = req.params;
     const user = await prisma.user.findUnique({ where: { id } });
-    return returnSuccess(req, res, 200, 'User fetched successfully', user);
+    returnSuccess(req, res, 200, 'User fetched successfully', user);
   } catch (error) {
-    return returnNonSuccess(req, res, 500, 'Failed to fetch user');
+    next(error);
   }
 };
 
-export const createUser = async (req: Request, res: Response) => {
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { name, email, password } = req.body;
     const user = await prisma.user.create({ data: { name, email, password } });
-    return returnSuccess(req, res, 201, 'User created successfully', user);
+    returnSuccess(req, res, 201, 'User created successfully', user);
   } catch (error) {
-    return returnNonSuccess(req, res, 500, 'Failed to create user');
+    next(error);
   }
 };
 
-export const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { id } = req.params;
     const { name, email, password } = req.body;
@@ -39,18 +55,22 @@ export const updateUser = async (req: Request, res: Response) => {
       where: { id },
       data: { name, email, password },
     });
-    return returnSuccess(req, res, 200, 'User updated successfully', user);
+    returnSuccess(req, res, 200, 'User updated successfully', user);
   } catch (error) {
-    return returnNonSuccess(req, res, 500, 'Failed to update user');
+    next(error);
   }
 };
 
-export const deleteUser = async (req: Request, res: Response) => {
+export const deleteUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { id } = req.params;
     const user = await prisma.user.delete({ where: { id } });
-    return returnSuccess(req, res, 200, 'User deleted successfully', user);
+    returnSuccess(req, res, 200, 'User deleted successfully', user);
   } catch (error) {
-    return returnNonSuccess(req, res, 500, 'Failed to delete user');
+    next(error);
   }
 };
