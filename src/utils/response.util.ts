@@ -4,7 +4,7 @@ export function returnSuccess(
   res: Response,
   statusCode: number,
   message: string,
-  data: any
+  data: unknown
 ) {
   const returnResponse = {
     status: 'OK',
