@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
-import { returnNonSuccess } from '../utils/helper.util';
+import { returnNonSuccess } from '../utils/response.util';
 
 export const validateLogin = (
   req: Request,

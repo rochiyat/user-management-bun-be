@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import prisma from '../configs/db.config';
-import { returnNonSuccess } from '../utils/helper.util';
+import { returnNonSuccess } from '../utils/response.util';
 
 export const validateGetUserById = (
   req: Request,

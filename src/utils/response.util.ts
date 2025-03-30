@@ -1,11 +1,10 @@
 import type { Request, Response } from 'express';
 
 export function returnSuccess(
-  req: Request,
   res: Response,
   statusCode: number,
   message: string,
-  data: unknown
+  data: any
 ) {
   const returnResponse = {
     status: 'OK',
@@ -16,7 +15,6 @@ export function returnSuccess(
 }
 
 export function returnNonSuccess(
-  req: Request,
   res: Response,
   statusCode: number,
   message: string

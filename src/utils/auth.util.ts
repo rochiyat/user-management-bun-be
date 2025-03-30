@@ -1,7 +1,7 @@
 import jwt, { type JwtPayload } from 'jsonwebtoken';
 import type { NextFunction, Request, Response } from 'express';
 import env from '../configs/env.config';
-import { returnNonSuccess } from './helper.util';
+import { returnNonSuccess } from './response.util';
 
 export function generateToken(id: string) {
   return jwt.sign({ id }, env.JWT_SECRET, { expiresIn: '1h' });

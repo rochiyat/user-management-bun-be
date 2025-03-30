@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { returnSuccess, returnNonSuccess } from '../utils/helper.util';
+import { returnSuccess, returnNonSuccess } from '../utils/response.util';
 import prisma from '../configs/db.config';
 import {
   decodeToken,
