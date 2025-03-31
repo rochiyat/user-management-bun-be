@@ -35,7 +35,7 @@ export function isAuthenticated(
 ) {
   const token = getTokenFromHeader(req);
   if (!token) {
-    return returnNonSuccess(req, res, 401, 'Unauthorized');
+    return returnNonSuccess(res, 401, 'Unauthorized');
   }
   next();
 }
