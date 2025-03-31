@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run ./public/index.ts",
+    "start": "bun run ./public/index.js",
     "dev": "bun --watch run ./src/index.ts",
     "build": "bun build ./src/index.ts --outdir ./public --minify",
     "seed": "bun run ./src/seeders/index.seeder.ts",
