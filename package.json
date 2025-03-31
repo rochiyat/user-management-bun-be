@@ -6,7 +6,7 @@
   "scripts": {
     "start": "bun run ./build/index.ts",
     "dev": "bun --watch run ./src/index.ts",
-    "build": "bun build index.ts",
+    "build": "bun build ./src/index.ts --outdir ./build --minify",
     "seed": "bun run ./src/seeders/index.seeder.ts",
     "test": "bun test"
   },
