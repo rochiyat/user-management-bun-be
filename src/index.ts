@@ -1,7 +1,10 @@
 import express from 'express';
 import router from './routes/index';
+import { setupSwagger } from './swagger';
 
 const app = express();
+
+setupSwagger(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
