@@ -6,9 +6,7 @@
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb"
-      },
-      "output": "public",
-      "builds": [{ "src": "src/index.ts", "use": "@vercel/node" }]
+      }
     }
   ],
   "routes": [
