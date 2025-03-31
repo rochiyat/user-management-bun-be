@@ -2,11 +2,7 @@ import prisma from '../configs/db.config';
 import type { Request, Response, NextFunction } from 'express';
 import { returnSuccess, returnNonSuccess } from '../utils/response.util';
 
-export const getUsers = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const users = await prisma.user.findMany();
     returnSuccess(res, 200, 'Users fetched successfully', users);
@@ -15,11 +11,7 @@ export const getUsers = async (
   }
 };
 
-export const getUserById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const getUserById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
     const user = await prisma.user.findUnique({ where: { id } });
@@ -32,11 +24,7 @@ export const getUserById = async (
   }
 };
 
-export const createUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email, password } = req.body;
     const user = await prisma.user.create({ data: { name, email, password } });
@@ -46,11 +34,7 @@ export const createUser = async (
   }
 };
 
-export const updateUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const { name, email, password } = req.body;
@@ -64,11 +48,7 @@ export const updateUser = async (
   }
 };
 
-export const deleteUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const user = await prisma.user.delete({ where: { id } });

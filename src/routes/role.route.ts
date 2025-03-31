@@ -1,11 +1,5 @@
 import { Router } from 'express';
-import {
-  createRole,
-  deleteRole,
-  getRoleById,
-  getRoles,
-  updateRole,
-} from '../controllers/role.controller';
+import { createRole, deleteRole, getRoleById, getRoles, updateRole } from '../controllers/role.controller';
 import {
   validateCreateRole,
   validateUpdateRole,

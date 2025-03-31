@@ -1,17 +1,9 @@
 import type { Request, Response, NextFunction } from 'express';
 import { returnSuccess, returnNonSuccess } from '../utils/response.util';
 import prisma from '../configs/db.config';
-import {
-  decodeToken,
-  generateToken,
-  getTokenFromHeader,
-} from '../utils/auth.util';
+import { decodeToken, generateToken, getTokenFromHeader } from '../utils/auth.util';
 
-export const login = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
   try {
@@ -40,11 +32,7 @@ export const login = async (
   }
 };
 
-export const register = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const register = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   try {
     const passwordHash = await Bun.password.hash(password);
@@ -57,11 +45,7 @@ export const register = async (
   }
 };
 
-export const logout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const logout = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = getTokenFromHeader(req);
     if (!token) {
@@ -79,11 +63,7 @@ export const logout = async (
   }
 };
 
-export const refreshToken = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = getTokenFromHeader(req);
     if (!token) {

@@ -15,8 +15,11 @@ export function decodeToken(token: string): JwtPayload | null {
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET);
     return decoded as JwtPayload;
-  } catch (error) {
-    return null;
+  } catch (error: unknown) {
+    if (error instanceof jwt.JsonWebTokenError) {
+      return null;
+    }
+    throw error;
   }
 }
 
@@ -28,11 +31,7 @@ export function getTokenFromHeader(req: Request) {
   return token;
 }
 
-export function isAuthenticated(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function isAuthenticated(req: Request, res: Response, next: NextFunction) {
   const token = getTokenFromHeader(req);
   if (!token) {
     return returnNonSuccess(res, 401, 'Unauthorized');

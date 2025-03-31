@@ -1,11 +1,5 @@
 import { Router } from 'express';
-import {
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
-} from '../controllers/user.controller';
+import { getUsers, getUserById, createUser, updateUser, deleteUser } from '../controllers/user.controller';
 import {
   validateGetUserById,
   validateCreateUser,

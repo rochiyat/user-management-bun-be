@@ -3,15 +3,9 @@ import fs from 'fs';
 import type { UserSeeder } from '../models/user.model';
 
 // Membaca file JSON secara sinkron
-const userSeederJson = JSON.parse(
-  fs.readFileSync('./src/seeders/user.seed.json', 'utf-8')
-);
-const roleSeederJson = JSON.parse(
-  fs.readFileSync('./src/seeders/role.seed.json', 'utf-8')
-);
-const userRoleSeederJson = JSON.parse(
-  fs.readFileSync('./src/seeders/user-role.seed.json', 'utf-8')
-);
+const userSeederJson = JSON.parse(fs.readFileSync('./src/seeders/user.seed.json', 'utf-8'));
+const roleSeederJson = JSON.parse(fs.readFileSync('./src/seeders/role.seed.json', 'utf-8'));
+const userRoleSeederJson = JSON.parse(fs.readFileSync('./src/seeders/user-role.seed.json', 'utf-8'));
 
 async function seedDatabase() {
   try {

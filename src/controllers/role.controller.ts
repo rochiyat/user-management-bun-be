@@ -2,11 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { prisma } from '../configs/db.config';
 import { returnSuccess } from '../utils/response.util';
 
-export const getRoles = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getRoles = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const roles = await prisma.role.findMany();
     returnSuccess(res, 200, 'Roles fetched successfully', roles);
@@ -15,11 +11,7 @@ export const getRoles = async (
   }
 };
 
-export const getRoleById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getRoleById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const role = await prisma.role.findUnique({ where: { id } });
@@ -29,11 +21,7 @@ export const getRoleById = async (
   }
 };
 
-export const createRole = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const createRole = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, description } = req.body;
     const role = await prisma.role.create({ data: { name, description } });
@@ -43,11 +31,7 @@ export const createRole = async (
   }
 };
 
-export const updateRole = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateRole = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const { name, description } = req.body;
@@ -61,11 +45,7 @@ export const updateRole = async (
   }
 };
 
-export const deleteRole = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const deleteRole = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     await prisma.role.delete({ where: { id } });

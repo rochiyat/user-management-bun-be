@@ -1,13 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
-import prisma from '../configs/db.config';
-import { returnNonSuccess } from '../utils/response.util';
 
-export const validateGetUserById = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateGetUserById = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     id: Joi.string().required(),
   });
@@ -16,11 +10,7 @@ export const validateGetUserById = (
   next();
 };
 
-export const validateCreateUser = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateCreateUser = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
@@ -31,11 +21,7 @@ export const validateCreateUser = (
   next();
 };
 
-export const validateUpdateUser = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateUpdateUser = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     name: Joi.string().optional(),
     email: Joi.string().email().optional(),
@@ -46,11 +32,7 @@ export const validateUpdateUser = (
   next();
 };
 
-export const validateDeleteUser = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateDeleteUser = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     id: Joi.string().required(),
   });

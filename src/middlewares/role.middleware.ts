@@ -1,11 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 
-export const validateCreateRole = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateCreateRole = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     name: Joi.string().required(),
     description: Joi.string().required(),
@@ -15,11 +11,7 @@ export const validateCreateRole = (
   next();
 };
 
-export const validateUpdateRole = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateUpdateRole = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     name: Joi.string().optional(),
     description: Joi.string().optional(),
@@ -29,11 +21,7 @@ export const validateUpdateRole = (
   next();
 };
 
-export const validateDeleteRole = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateDeleteRole = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     id: Joi.string().required(),
   });
@@ -42,11 +30,7 @@ export const validateDeleteRole = (
   next();
 };
 
-export const validateGetRoleById = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateGetRoleById = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     id: Joi.string().required(),
   });
@@ -55,11 +39,7 @@ export const validateGetRoleById = (
   next();
 };
 
-export const validateGetRoles = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateGetRoles = (req: Request, res: Response, next: NextFunction) => {
   const schema = Joi.object({
     name: Joi.string().optional(),
     description: Joi.string().optional(),
