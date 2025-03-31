@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run ./build/index.ts",
+    "start": "bun run ./public/index.ts",
     "dev": "bun --watch run ./src/index.ts",
-    "build": "bun build ./src/index.ts --outdir ./build --minify",
+    "build": "bun build ./src/index.ts --outdir ./public --minify",
     "seed": "bun run ./src/seeders/index.seeder.ts",
     "test": "bun test",
     "lint": "eslint src --ext .ts",
