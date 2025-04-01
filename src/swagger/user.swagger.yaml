@@ -1,13 +1,13 @@
 paths:
   /api/users/:
     get:
-      summary: "Ambil daftar pengguna"
-      description: "Mengambil daftar semua pengguna dari database"
+      summary: 'Ambil daftar pengguna'
+      description: 'Mengambil daftar semua pengguna dari database'
       tags:
         - Users
       responses:
-        "200":
-          description: "Berhasil mengambil daftar pengguna"
+        '200':
+          description: 'Berhasil mengambil daftar pengguna'
           content:
             application/json:
               schema:
@@ -15,10 +15,10 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: "OK"
+                    example: 'OK'
                   message:
                     type: string
-                    example: "Users fetched successfully"
+                    example: 'Users fetched successfully'
                   data:
                     type: array
                     items:
@@ -26,24 +26,24 @@ paths:
                       properties:
                         id:
                           type: string
-                          example: "123456"
+                          example: '123456'
                         name:
                           type: string
                           example: "Farid Nu'man"
                         email:
                           type: string
-                          example: "farid@example.com"
+                          example: 'farid@example.com'
                         password:
                           type: string
-                          example: "hashedpassword123"
+                          example: 'hashedpassword123'
                         createdAt:
                           type: string
                           format: date-time
                         updatedAt:
                           type: string
                           format: date-time
-        "500":
-          description: "Kesalahan server"
+        '500':
+          description: 'Kesalahan server'
           content:
             application/json:
               schema:
@@ -51,7 +51,7 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: "error"
+                    example: 'error'
                   message:
                     type: string
-                    example: "Internal server error"
+                    example: 'Internal server error'

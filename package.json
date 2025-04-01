@@ -6,7 +6,7 @@
   "scripts": {
     "start": "bun run ./dist/index.js",
     "dev": "bun --watch run ./src/index.ts",
-    "build": "bun build ./src/index.ts --outdir ./dist",
+    "build": "bun build ./src/index.ts --outdir ./dist --target node && mv dist/index.js dist/index.mjs && prisma generate",
     "seed": "bun run ./src/seeders/index.seeder.ts",
     "test": "bun test",
     "lint": "eslint src --ext .ts",
@@ -14,6 +14,7 @@
     "format:check": "prettier --check src"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
     "@types/express": "^5.0.1",
     "@types/joi": "^17.2.3",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "bcrypt-ts": "^6.0.0",
     "express": "^4.21.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",

@@ -1,5 +1,6 @@
 import prisma from '../configs/db.config';
 import fs from 'fs';
+import { hash } from 'bcrypt-ts';
 import type { UserSeeder } from '../models/user.model';
 
 // Membaca file JSON secara sinkron
@@ -13,7 +14,7 @@ async function seedDatabase() {
     const userSeed = await Promise.all(
       userSeederJson.map(async (user: UserSeeder) => ({
         ...user,
-        password: await Bun.password.hash(user.password),
+        password: await hash(user.password, process.env.SALT_ROUNDS || 10),
       }))
     );
 

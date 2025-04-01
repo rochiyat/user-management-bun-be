@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
+import { hash, compare } from 'bcrypt-ts';
 import { returnSuccess, returnNonSuccess } from '../utils/response.util';
 import prisma from '../configs/db.config';
 import { decodeToken, generateToken, getTokenFromHeader } from '../utils/auth.util';
@@ -13,7 +14,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       return;
     }
 
-    const isPasswordValid = await Bun.password.verify(password, user.password);
+    const isPasswordValid = await compare(password, user.password);
     if (!isPasswordValid) {
       returnNonSuccess(res, 401, 'Invalid credentials');
       return;
@@ -35,7 +36,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   try {
-    const passwordHash = await Bun.password.hash(password);
+    const passwordHash = await hash(password, process.env.SALT_ROUNDS || 10);
     const user = await prisma.user.create({
       data: { email, password: passwordHash, name: email.split('@')[0] },
     });
