@@ -11,7 +11,10 @@
     "test": "bun test",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src",
-    "format:check": "prettier --check src"
+    "format:check": "prettier --check src",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "docker:build": "docker build -t user-management-bun-be ."
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
